@@ -1,0 +1,61 @@
+<section class="container">
+  <h1 class="text-center mt-5">Nova Promoção</h1>
+  <article class="first-section mt-5 py-4 px-5">
+    <div class="header-section-add">
+      <button class="btn btn-home" routerLink="/">
+        <i class="fas fa-home"></i>
+      </button>
+    </div>
+    <form class="row" [formGroup]="formNewPromo" (ngSubmit)="onSubmit()">
+      <div class="col-md-6 form-group">
+        <label for="gtin"> GTIN </label>
+        <input type="string" class="form-control" formControlName="gtin" minlength="14" maxlength="14" required />
+        <div *ngIf="formNewPromo.get('gtin')?.touched" class="error">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>O GTIN deve conter 14 digitos</span>
+        </div>
+      </div>
+      <div class="col-md-3 form-group">
+        <label for="valorRegular">Valor Regular</label>
+        <div class="input-group">
+          <span class="input-group-text">R$</span>
+          <input type="text" class="form-control mb-0" formControlName="valorRegular" />
+          <span class="input-group-text">,00</span>
+        </div>
+      </div>
+      <div class="col-md-3 form-group">
+        <label for="valorPromocional">Valor Promocional</label>
+        <div class="input-group">
+          <span class="input-group-text">R$</span>
+          <input type="text" class="form-control mb-0" formControlName="valorPromocional" />
+          <span class="input-group-text">,00</span>
+        </div>
+      </div>
+      <div class="col-md-4 form-group">
+        <label for="categoria">Categoria</label>
+        <select class="form-select" formControlName="categoria">
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+      </div>
+      <div class="col-md-4 form-group">
+        <label for="inicioPromocao">Data de Inicio da Promoção</label>
+        <input type="date" class="form-control mb-0" formControlName="inicioPromocao" />
+      </div>
+      <div class="col-md-4 form-group">
+        <label for="fimPromocao">Data de fim da Promoção</label>
+        <input type="date" class="form-control mb-0" formControlName="fimPromocao" />
+        <div *ngIf="formNewPromo.get('fimPromocao')?.touched" class="error">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>A data final deve ser maior que a inicial</span>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label for="descricao">Descrição</label>
+        <textarea class="form-control" id="descricao" rows="5" formControlName="descricao" maxlength="100"></textarea>
+      </div>
+      <div class="d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </article>
+</section>

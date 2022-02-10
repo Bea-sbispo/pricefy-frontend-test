@@ -1,0 +1,82 @@
+<section class="container mt-5">
+  <h1 class="text-center">Lista de Promoções</h1>
+  <article class="first-section mt-5 my-auto p-4">
+    <div class="dropdown header-section">
+      <button
+        class="btn btn-secondary dropdown-filter"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fas fa-sort-amount-down-alt"></i>
+      </button>
+      <div class="dropdown-menu">
+        <form [formGroup]="formGroup" (ngSubmit)="dateFilter()">
+          <label for="inicioPromocao">De:</label>
+          <input type="date" formControlName="dataInicial" class="form-control mb-0" />
+          <label for="inicioPromocao">Até:</label>
+          <input type="date" formControlName="dataFinal" class="form-control mb-0" />
+          <button type="submit" class="btn btn-danger add-btn mt-3">Aplicar</button>
+        </form>
+      </div>
+      <button class="btn btn-success add-btn" routerLink="/add">Nova Promoção</button>
+    </div>
+    <h3 *ngIf="promos.length === 0; else table" class="text-center">
+      😒 Não há promoções cadastradas no momento ¯\_( ͡° ͜ʖ ͡°)_/¯
+    </h3>
+    <ng-template #table>
+      <table class="table table-hover text-center p-3">
+        <thead>
+          <tr>
+            <th scope="col">GTIN</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor Regular</th>
+            <th scope="col">Valor Promocional</th>
+            <th scope="col">Inicio da Promoção</th>
+            <th scope="col">Fim da Promoção</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let promo of promos" [ngClass]="{ 'ended-promo': endedPromo(promo.fimPromocao) }">
+            <th scope="row">{{ promo.gtin }}</th>
+            <td>{{ promo.categoria }}</td>
+            <td>
+              <span class="d-inline-block wrapper-text">{{ promo.descricao }}</span>
+            </td>
+            <td>{{ promo.valorRegular | currency: "BRL" }}</td>
+            <td>{{ promo.valorPromocional | currency: "BRL" }}</td>
+            <td>{{ promo.inicioPromocao | date: "dd/MM/yyyy" }}</td>
+            <td>{{ promo.fimPromocao | date: "dd/MM/yyyy" }}</td>
+            <td>
+              <button
+                (click)="setActive(promo)"
+                class="btn btn-warning"
+                title="view"
+                data-bs-toggle="modal"
+                data-bs-target="#editModal"
+              >
+                <i class="far fa-eye"></i>
+              </button>
+              <button
+                class="btn btn-primary"
+                (click)="setActive(promo, true)"
+                title="edit"
+                data-bs-toggle="modal"
+                data-bs-target="#editModal"
+              >
+                <i class="far fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="removePromo(promo.id)" title="delete">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </article>
+</section>
+<app-edit [hasEdit]="hasEdit"></app-edit>

@@ -1,0 +1,50 @@
+button {
+  margin: 0px 5px;
+}
+
+.fa-sort-amount-down-alt {
+  font-size: 24px;
+}
+.dropdown-filter {
+  background: none;
+  border: none;
+  text-decoration: none;
+}
+
+.dropdown-filter:hover,
+.dropdown-filter:focus {
+  background: #fafafa34;
+}
+
+.dropdown-menu {
+  background: #fafafa;
+  border-radius: 20px;
+  padding: 16px;
+  font-size: 18px;
+}
+
+.dropdown-menu label {
+  color: black !important;
+}
+
+.header-section {
+  padding: 16px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-btn {
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: 8px 16px;
+}
+
+.wrapper-text {
+  text-overflow: ellipsis;
+  width: 130px;
+  overflow: hidden;
+}
+
+.ended-promo {
+  background: #ff5959;
+}

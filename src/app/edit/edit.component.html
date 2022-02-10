@@ -1,0 +1,69 @@
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ hasEdit ? "Editar" : "Visualizar" }} Promoção</h5>
+        <button #btnClose class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form
+        *ngIf="formEditGroup"
+        [formGroup]="formEditGroup"
+        (ngSubmit)="onSubmit()"
+        class="row d-flex justify-content-center modal-body"
+      >
+        <div class="col-5 mb-5">
+          <div class="form-group">
+            <label for="gtina">GTIN</label>
+            <input type="string" class="form-control" formControlName="gtin" [readonly]="!hasEdit" />
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select class="form-select" formControlName="categoria" [attr.disabled]="!hasEdit ? false : null">
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea
+              class="form-control"
+              id="descricao"
+              rows="5"
+              formControlName="descricao"
+              [readonly]="!hasEdit"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="col-5 mb-5">
+          <div class="form-group">
+            <label for="valorRegular">Valor Regular</label>
+            <div class="input-group">
+              <span class="input-group-text">R$</span>
+              <input type="text" class="form-control mb-0" formControlName="valorRegular" [readonly]="!hasEdit" />
+              <span class="input-group-text">,00</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="valorPromocional">Valor Promocional</label>
+            <div class="input-group">
+              <span class="input-group-text">R$</span>
+              <input type="text" class="form-control mb-0" formControlName="valorPromocional" [readonly]="!hasEdit" />
+              <span class="input-group-text">,00</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inicioPromocao">Data de Inicio da Promoção</label>
+            <input type="date" class="form-control mb-0" formControlName="inicioPromocao" [readonly]="!hasEdit" />
+          </div>
+          <div class="form-group">
+            <label for="fimPromocao">Data de fim da Promoção</label>
+            <input type="date" class="form-control mb-0" formControlName="fimPromocao" [readonly]="!hasEdit" />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <button *ngIf="hasEdit" type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
