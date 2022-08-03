@@ -1,3 +1,7 @@
 # pricefy-frontend-test
 
-Teste de código para Engenharia de Front-end na Pricefy baseado nos requisitos do arquivo [WHAT.md](WHAT.md)
+Teste de código para Front-end na Pricefy.
+
+[⭐Access the page here⭐](pricefy-frontend-test-sigma.vercel.app)
+
+
