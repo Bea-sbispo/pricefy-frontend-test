@@ -59,4 +59,10 @@ export class PromotionListComponent implements OnInit {
     if (!data) return false;
     return new Date(data).setHours(0, 0, 0) < new Date().setHours(0, 0, 0);
   }
+
+  /** Trunca o texto da descrição da promoção */
+  truncateText(text: string, maxLength: number): string {
+    if (!text) return '';
+    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  }
 }

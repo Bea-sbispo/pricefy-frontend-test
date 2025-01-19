@@ -1,29 +1,5 @@
-.modal-content {
-  background: rgb(255 255 255 / 48%);
-  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-input,
-textarea {
-  background: rgba(255, 255, 255, 0.281);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  margin-bottom: 20px;
-}
-
-.modal-dialog {
-  max-width: 900px;
-}
-.form-select option {
-  color: black;
-}
-.form-select option:focus {
-  color: black;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }

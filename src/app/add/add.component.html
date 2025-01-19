@@ -1,18 +1,13 @@
-<section class="container">
+<section class="container text-foreground">
   <h1 class="text-center mt-5">Nova Promoção</h1>
   <article class="first-section mt-5 py-4 px-5">
-    <div class="header-section-add">
-      <button class="btn btn-home" routerLink="/">
-        <i class="fas fa-home"></i>
-      </button>
-    </div>
     <form class="row" [formGroup]="formNewPromo" (ngSubmit)="onSubmit()">
       <div class="col-md-6 form-group">
         <label for="gtin"> GTIN </label>
         <input type="string" class="form-control" formControlName="gtin" minlength="14" maxlength="14" required />
-        <div *ngIf="formNewPromo.get('gtin')?.touched" class="error">
+        <div *ngIf="formNewPromo.get('gtin')?.touched" class="text-danger my-2">
           <i class="fa-solid fa-triangle-exclamation"></i>
-          <span>O GTIN deve conter 14 digitos</span>
+          <span class="ms-2">O GTIN deve conter 14 digitos</span>
         </div>
       </div>
       <div class="col-md-3 form-group">
@@ -44,16 +39,21 @@
       <div class="col-md-4 form-group">
         <label for="fimPromocao">Data de fim da Promoção</label>
         <input type="date" class="form-control mb-0" formControlName="fimPromocao" />
-        <div *ngIf="formNewPromo.get('fimPromocao')?.touched" class="error">
+        <div *ngIf="formNewPromo.get('fimPromocao')?.touched" class="text-danger my-2">
           <i class="fa-solid fa-triangle-exclamation"></i>
-          <span>A data final deve ser maior que a inicial</span>
+          <span class="ms-2">A data final deve ser maior que a inicial</span>
         </div>
       </div>
       <div class="col form-group">
         <label for="descricao">Descrição</label>
         <textarea class="form-control" id="descricao" rows="5" formControlName="descricao" maxlength="100"></textarea>
       </div>
-      <div class="d-flex justify-content-end mt-3">
+      <div>
+      </div>
+      <div class="d-flex justify-content-end gap-2 mt-3">
+        <button class="btn btn-danger" routerLink="/" type="button">
+          Cancelar
+        </button>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </div>
     </form>

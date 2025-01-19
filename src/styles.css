@@ -1,20 +1,20 @@
 body {
-  background-image: linear-gradient(133deg, #00398e 0%, #e400ff 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  -webkit-font-smoothing: antialiased;
+  background-color: rgb(29, 26, 32) !important;
   min-width: 100%;
 }
 
-* {
-  color: #fafafa;
+.text-background {
+  color: rgb(29, 26, 32) !important;
 }
 
-.first-section {
-  background: rgba(255, 255, 255, 0.164);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+.text-foreground {
+  color: #fafafa !important;
+}
+
+.bg-foreground {
+  background-color: #fafafa !important;
+}
+
+.bg-background {
+  background-color: rgb(29, 26, 32) !important;
 }

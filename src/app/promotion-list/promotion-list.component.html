@@ -1,14 +1,8 @@
 <section class="container mt-5">
-  <h1 class="text-center">Lista de Promoções</h1>
-  <article class="first-section mt-5 my-auto p-4">
+  <h1 class="text-center text-foreground">Lista de Promoções</h1>
+  <article class="mt-5 my-auto">
     <div class="dropdown header-section">
-      <button
-        class="btn btn-secondary dropdown-filter"
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+      <button class="btn btn-secondary dropdown-filter" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-sort-amount-down-alt"></i>
       </button>
       <div class="dropdown-menu">
@@ -22,11 +16,13 @@
       </div>
       <button class="btn btn-success add-btn" routerLink="/add">Nova Promoção</button>
     </div>
-    <h3 *ngIf="promos.length === 0; else table" class="text-center">
-      😒 Não há promoções cadastradas no momento ¯\_( ͡° ͜ʖ ͡°)_/¯
-    </h3>
+    <div class="bg-foreground py-5" *ngIf="promos.length === 0; else table">
+      <h3 class="text-center text-background">
+        Não há promoções cadastradas no momento ¯\_( ͡° ͜ʖ ͡°)_/¯
+      </h3>
+    </div>
     <ng-template #table>
-      <table class="table table-hover text-center p-3">
+      <table class="table table-hover text-center text-background p-3">
         <thead>
           <tr>
             <th scope="col">GTIN</th>
@@ -44,33 +40,21 @@
             <th scope="row">{{ promo.gtin }}</th>
             <td>{{ promo.categoria }}</td>
             <td>
-              <span class="d-inline-block wrapper-text">{{ promo.descricao }}</span>
+              <span class="d-inline-block wrapper-text">{{ truncateText(promo.descricao, 15) }}</span>
             </td>
             <td>{{ promo.valorRegular | currency: "BRL" }}</td>
             <td>{{ promo.valorPromocional | currency: "BRL" }}</td>
             <td>{{ promo.inicioPromocao | date: "dd/MM/yyyy" }}</td>
             <td>{{ promo.fimPromocao | date: "dd/MM/yyyy" }}</td>
             <td>
-              <button
-                (click)="setActive(promo)"
-                class="btn btn-warning"
-                title="view"
-                data-bs-toggle="modal"
-                data-bs-target="#editModal"
-              >
-                <i class="far fa-eye"></i>
+              <button (click)="setActive(promo)" class="btn btn-warning" title="view" data-bs-toggle="modal" data-bs-target="#editModal">
+                <i class="far fa-eye text-foreground"></i>
               </button>
-              <button
-                class="btn btn-primary"
-                (click)="setActive(promo, true)"
-                title="edit"
-                data-bs-toggle="modal"
-                data-bs-target="#editModal"
-              >
-                <i class="far fa-edit"></i>
+              <button class="btn btn-primary" (click)="setActive(promo, true)" title="edit" data-bs-toggle="modal" data-bs-target="#editModal">
+                <i class="far fa-edit text-foreground"></i>
               </button>
               <button class="btn btn-danger" (click)="removePromo(promo.id)" title="delete">
-                <i class="far fa-trash-alt"></i>
+                <i class="far fa-trash-alt text-foreground"></i>
               </button>
             </td>
           </tr>
