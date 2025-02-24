@@ -1,7 +1,7 @@
 # pricefy-frontend-test
 
 Teste de código para Front-end na Pricefy.
-![image](readme-main.jpg)
+![image](readme-cover.jpg)
 
 ### Tecnologias
 
